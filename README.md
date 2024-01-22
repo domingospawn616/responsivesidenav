@@ -1,4 +1,6 @@
-# App10
+# Responsive Sidenav Angular
+
+This project was learning from [youtube](https://www.youtube.com/watch?v=rAWlJMe_7rg)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.3.
 
