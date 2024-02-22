@@ -1,1 +1,25 @@
-<p>sidenav works!</p>
+<div class="sidenav" [class.sidenav-collapsed]="collapse">
+    <div class="logo-container">
+        <button class="logo" (click)="toggleCollapse()">A</button>
+        @if (collapse) { 
+            <div class="logo-text">Angular</div> 
+            <button class="btn-close" (click)="closeSideNav()">
+                <mat-icon class="btn-close-icon" fontIcon="close"></mat-icon>
+            </button>
+        }
+        
+    </div>
+
+    <ul class="sidenav-nav">
+
+        @for (nav of navData; track nav) {
+            <li class="sidenav-nav-item">
+                <a class="sidenav-nav-link" [routerLink]="[nav.routeLink]">
+                    <mat-icon class="sidenav-nav-link-icon" [fontIcon]="nav.icon"></mat-icon>
+                    @if (collapse){ <span class="sidenav-link-text">{{nav.label}}</span> }
+                </a>
+            </li>
+        }
+
+    </ul>
+</div>
