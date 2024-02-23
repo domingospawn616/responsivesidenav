@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { NavDataServiceService } from '../nav-data-service.service';
 import { NavData } from '../nav-data';
 import { RouterLinkActive, RouterModule } from '@angular/router';
@@ -18,8 +18,18 @@ export class SidenavComponent {
   screenSize: SideNavToggle = { collapsed: false, screenWidth: 0 };
   navData: NavData[];
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any){
+    this.screenSize.screenWidth = window.innerWidth;
+    if(this.screenSize.screenWidth <= 768){
+      this.screenSize.collapsed = false;
+      this.onToggleSideNav.emit(this.screenSize);
+    }
+  }
+
   constructor(private sideNavService: NavDataServiceService){
     this.navData = sideNavService.getAllNavData() ?? [];
+    this.screenSize.screenWidth = window.innerWidth;
   }
 
   toggleCollapse():void{
