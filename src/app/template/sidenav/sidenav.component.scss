@@ -102,3 +102,12 @@
         
     }
 }
+
+.active {
+    background-color: #fff;
+
+    .sidenav-nav-link-icon,
+    .sidenav-link-text {
+        color: #000;
+    }
+}

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NavDataServiceService } from '../nav-data-service.service';
 import { NavData } from '../nav-data';
-import { RouterModule } from '@angular/router';
+import { RouterLinkActive, RouterModule } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 import { SideNavToggle } from './sidenavtoogle';
 
@@ -15,7 +15,7 @@ import { SideNavToggle } from './sidenavtoogle';
 export class SidenavComponent {
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
-  collapse = false;
+  screenSize: SideNavToggle = { collapsed: false, screenWidth: 0 };
   navData: NavData[];
 
   constructor(private sideNavService: NavDataServiceService){
@@ -23,10 +23,12 @@ export class SidenavComponent {
   }
 
   toggleCollapse():void{
-    this.collapse = !this.collapse;
+    this.screenSize.collapsed = !this.screenSize.collapsed;
+    this.onToggleSideNav.emit(this.screenSize);
   }
 
   closeSideNav():void {
-    this.collapse = false;
+    this.screenSize.collapsed = false;
+    this.onToggleSideNav.emit(this.screenSize);
   }
 }
