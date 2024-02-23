@@ -2,8 +2,8 @@
     <div class="logo-container">
         <button class="logo" (click)="toggleCollapse()">A</button>
         @if (screenSize.collapsed) { 
-            <div class="logo-text">Angular</div> 
-            <button class="btn-close" (click)="closeSideNav()">
+            <div class="logo-text" @fadeInOut>Angular</div> 
+            <button class="btn-close" @rotate (click)="closeSideNav()">
                 <mat-icon class="btn-close-icon" fontIcon="close"></mat-icon>
             </button>
         }
