@@ -1,0 +1,9 @@
+@if (collapsed && data.items && data.items.length > 0) {
+    <ul class="sublevel-nav">
+        @for (item of data.items; track $index) {
+            <li class="sublevel-nav-item">
+                <a class="sublevel-nav-link"></a>
+            </li>
+        }
+    </ul>
+}

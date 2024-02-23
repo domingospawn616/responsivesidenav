@@ -1,4 +1,4 @@
-export interface SideNavToggle {
+export interface ISideNavToggle {
     screenWidth: number;
     collapsed: boolean;
 }
