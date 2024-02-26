@@ -1,15 +1,16 @@
 import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { NavDataServiceService } from '../nav-data-service.service';
-import { NavData } from '../nav-data';
+import { INavData } from '../nav-data';
 import { RouterLinkActive, RouterModule } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
-import { SideNavToggle } from './sidenavtoogle';
+import { ISideNavToggle } from './sidenavtoogle';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
+import { SublevelMenuComponent } from './sublevel-menu/sublevel-menu.component';
 
 @Component({
   selector: 'app-sidenav',
   standalone: true,
-  imports: [RouterModule, MatIcon],
+  imports: [RouterModule, MatIcon, SublevelMenuComponent],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss',
   animations: [
@@ -36,9 +37,9 @@ import { animate, keyframes, style, transition, trigger } from '@angular/animati
 })
 export class SidenavComponent {
 
-  @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
-  screenSize: SideNavToggle = { collapsed: false, screenWidth: 0 };
-  navData: NavData[];
+  @Output() onToggleSideNav: EventEmitter<ISideNavToggle> = new EventEmitter();
+  screenSize: ISideNavToggle = { collapsed: false, screenWidth: 0 };
+  navData: INavData[];
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any){

@@ -2,7 +2,40 @@
     <ul class="sublevel-nav">
         @for (item of data.items; track $index) {
             <li class="sublevel-nav-item">
-                <a class="sublevel-nav-link"></a>
+                @if (item.items && item.items.length > 0) {
+                    <a class="sublevel-nav-link">
+                        <mat-icon class="sublevel-nav-icon" [fontIcon]="item.icon"></mat-icon>
+                        @if (collapsed) {
+                            <span class="sublevel-link-text">{{item.label}}</span>
+                            @if (item.expanded) {
+                                <mat-icon fontIcon="arrow_right"></mat-icon>
+                            } @else {
+                                <mat-icon fontIcon="arrow_drop_down"></mat-icon>
+                            }
+                        }
+                    </a>
+                } @else if (!item.items || (item.items && item.items.length == 0)) {
+                    <a class="sublevel-nav-link" 
+                        [routerLink]="[item.routeLink]"
+                        routerLinkActive="active-sublevel"
+                        [routerLinkActiveOptions]="{exact: true}" >
+
+                        <mat-icon class="sublevel-nav-icon" [fontIcon]="item.icon"></mat-icon>
+                        @if (collapsed) {
+                            <span class="sublevel-link-text">{{item.label}}</span>
+                        }
+                    </a>
+                }
+
+                @if (item.items && item.items.length > 0) {
+                    <div>
+                        <app-sublevel-menu
+                            [collapsed]="collapsed"
+                            [multiple]="multiple"
+                            [expanded]="item.expanded"
+                        ></app-sublevel-menu>
+                    </div>
+                }
             </li>
         }
     </ul>

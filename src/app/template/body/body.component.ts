@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SideNavToggle } from '../sidenav/sidenavtoogle';
+import { ISideNavToggle } from '../sidenav/sidenavtoogle';
 
 @Component({
   selector: 'app-body',
@@ -10,7 +10,7 @@ import { SideNavToggle } from '../sidenav/sidenavtoogle';
   styleUrl: './body.component.scss'
 })
 export class BodyComponent {
-  @Input() screenStatus: SideNavToggle = {collapsed: false, screenWidth: 0};
+  @Input() screenStatus: ISideNavToggle = {collapsed: false, screenWidth: 0};
 
   getBodyClass(): string {
     let styleClass = '';

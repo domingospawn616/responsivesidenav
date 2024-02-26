@@ -21,6 +21,10 @@
                     <mat-icon class="sidenav-nav-link-icon" [fontIcon]="nav.icon"></mat-icon>
                     @if (screenSize.collapsed){ <span class="sidenav-link-text">{{nav.label}}</span> }
                 </a>
+                <app-sublevel-menu
+                    [data]="nav"
+                    [collapsed]="screenSize.collapsed"
+                ></app-sublevel-menu>
             </li>
         }
 
