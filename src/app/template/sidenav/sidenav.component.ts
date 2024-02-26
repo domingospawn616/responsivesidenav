@@ -3,7 +3,7 @@ import { NavDataServiceService } from '../nav-data-service.service';
 import { INavData } from '../nav-data';
 import { RouterLinkActive, RouterModule } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
-import { ISideNavToggle } from './sidenavtoogle';
+import { ISideNavToggle, fadeInOut } from './sidenavtoogle';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { SublevelMenuComponent } from './sublevel-menu/sublevel-menu.component';
 
@@ -14,17 +14,7 @@ import { SublevelMenuComponent } from './sublevel-menu/sublevel-menu.component';
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss',
   animations: [
-    trigger('fadeInOut', [
-      transition(':enter', [
-        style({opacity: 0}), 
-        animate('1000ms', style({opacity: 1}))
-      ]),
-      transition(':leave', [
-        style({opcacity: 1}),
-        animate('1000ms', style({opacity: 0}))
-      ])
-    ]),
-
+    fadeInOut,
     trigger('rotate', [
       transition(':enter', [
         animate('1000ms', keyframes([

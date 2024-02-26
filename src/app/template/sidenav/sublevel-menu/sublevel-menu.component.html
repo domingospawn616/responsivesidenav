@@ -17,7 +17,7 @@
                     <a class="sublevel-nav-link" (click)="handleClick(item)">
                         <mat-icon class="sublevel-nav-icon" [fontIcon]="item.icon"></mat-icon>
                         @if (collapsed) {
-                            <span class="sublevel-link-text">{{item.label}}</span>
+                            <span class="sublevel-link-text" @fadeInOut>{{item.label}}</span>
                             @if (item.expanded) {
                                 <mat-icon class="menu-collapse-icon" fontIcon="arrow_right"></mat-icon>
                             } @else {
@@ -33,7 +33,7 @@
 
                         <mat-icon class="sublevel-nav-icon" [fontIcon]="item.icon"></mat-icon>
                         @if (collapsed) {
-                            <span class="sublevel-link-text">{{item.label}}</span>
+                            <span class="sublevel-link-text" @fadeInOut>{{item.label}}</span>
                         }
                     </a>
                 }

@@ -3,6 +3,7 @@ import { INavData } from '../../nav-data';
 import { MatIcon } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { fadeInOut } from '../sidenavtoogle';
 
 @Component({
   selector: 'app-sublevel-menu',
@@ -11,6 +12,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   templateUrl: './sublevel-menu.component.html',
   styleUrl: '../sidenav.component.scss',
   animations: [
+    fadeInOut,
     trigger('submenu', [
       state('hidden', style({
         height: '0',
