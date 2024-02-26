@@ -19,9 +19,9 @@
                         @if (collapsed) {
                             <span class="sublevel-link-text">{{item.label}}</span>
                             @if (item.expanded) {
-                                <mat-icon fontIcon="arrow_right"></mat-icon>
+                                <mat-icon class="menu-collapse-icon" fontIcon="arrow_right"></mat-icon>
                             } @else {
-                                <mat-icon fontIcon="arrow_drop_down"></mat-icon>
+                                <mat-icon class="menu-collapse-icon" fontIcon="arrow_drop_down"></mat-icon>
                             }
                         }
                     </a>
@@ -41,6 +41,7 @@
                 @if (item.items && item.items.length > 0) {
                     <div>
                         <app-sublevel-menu
+                            [data]="item"
                             [collapsed]="collapsed"
                             [multiple]="multiple"
                             [expanded]="item.expanded"
