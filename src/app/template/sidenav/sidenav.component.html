@@ -10,6 +10,7 @@
         
     </div>
 
+    <!-- ANTIGO SEM SUBMENU
     <ul class="sidenav-nav">
 
         @for (nav of navData; track nav) {
@@ -21,12 +22,48 @@
                     <mat-icon class="sidenav-nav-link-icon" [fontIcon]="nav.icon"></mat-icon>
                     @if (screenSize.collapsed){ <span class="sidenav-link-text">{{nav.label}}</span> }
                 </a>
-                <app-sublevel-menu
-                    [data]="nav"
-                    [collapsed]="screenSize.collapsed"
-                ></app-sublevel-menu>
             </li>
         }
 
+    </ul>
+    -->
+
+    <ul class="sidenav-nav">
+        @for (navItem of navData; track $index) {
+            <li class="sidenav-nav-item">
+                @if (navItem.items && navItem.items.length > 0) {
+                    <a class="sidenav-nav-link" (click)="handleClick(navItem)">
+                        <mat-icon class="sidenav-nav-link-icon" [fontIcon]="navItem.icon"></mat-icon>
+                        @if (screenSize.collapsed) {
+                            <span class="sidenav-link-text">{{navItem.label}}</span>
+
+                            @if (navItem.items) {
+                                @if (navItem.expanded) { 
+                                    <mat-icon fontIcon="arrow_right"></mat-icon>
+                                } @else {
+                                    <mat-icon fontIcon="arrow_drop_down"></mat-icon>
+                                }
+                            }
+                        }
+                    </a>
+
+                    @if (screenSize.collapsed) {
+                        <app-sublevel-menu
+                            [collapsed]="screenSize.collapsed"
+                            [multiple]="multiple"
+                            [expanded]="navItem.expanded"
+                        ></app-sublevel-menu>
+                    }
+                } @else if (!navItem.items || (navItem.items && navItem.items.length == 0)) {
+                    <a class="sidenav-nav-link" 
+                        [routerLink]="[navItem.routeLink]" 
+                        routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact: true}" >
+                        <mat-icon class="sidenav-nav-link-icon" [fontIcon]="navItem.icon"></mat-icon>
+                        @if (screenSize.collapsed){ <span @fadeInOut class="sidenav-link-text">{{navItem.label}}</span> }
+                    </a>
+                }
+            </li>
+        }
     </ul>
 </div>
