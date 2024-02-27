@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidenavComponent } from './template/sidenav/sidenav.component';
-import { SideNavToggle } from './template/sidenav/sidenavtoogle';
+import { ISideNavToggle } from './template/sidenav/sidenavtoogle';
 import { BodyComponent } from './template/body/body.component';
 
 @Component({
@@ -14,9 +14,9 @@ import { BodyComponent } from './template/body/body.component';
 export class AppComponent {
   title = 'Angular Nav Bar';
 
-  isSideNavStatus: SideNavToggle = {collapsed: false, screenWidth: 0};
+  isSideNavStatus: ISideNavToggle = {collapsed: false, screenWidth: 0};
 
-  onToggleSideNav(data: SideNavToggle):void {
+  onToggleSideNav(data: ISideNavToggle):void {
     this.isSideNavStatus.collapsed = data.collapsed;
     this.isSideNavStatus.screenWidth = data.screenWidth;
   }

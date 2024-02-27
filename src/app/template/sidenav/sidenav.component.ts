@@ -1,29 +1,20 @@
 import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { NavDataServiceService } from '../nav-data-service.service';
-import { NavData } from '../nav-data';
-import { RouterLinkActive, RouterModule } from '@angular/router';
+import { INavData } from '../nav-data';
+import { Router, RouterLinkActive, RouterModule } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
-import { SideNavToggle } from './sidenavtoogle';
+import { ISideNavToggle, fadeInOut } from './sidenavtoogle';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
+import { SublevelMenuComponent } from './sublevel-menu/sublevel-menu.component';
 
 @Component({
   selector: 'app-sidenav',
   standalone: true,
-  imports: [RouterModule, MatIcon],
+  imports: [RouterModule, MatIcon, SublevelMenuComponent],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss',
   animations: [
-    trigger('fadeInOut', [
-      transition(':enter', [
-        style({opacity: 0}), 
-        animate('1000ms', style({opacity: 1}))
-      ]),
-      transition(':leave', [
-        style({opcacity: 1}),
-        animate('1000ms', style({opacity: 0}))
-      ])
-    ]),
-
+    fadeInOut,
     trigger('rotate', [
       transition(':enter', [
         animate('1000ms', keyframes([
@@ -36,9 +27,10 @@ import { animate, keyframes, style, transition, trigger } from '@angular/animati
 })
 export class SidenavComponent {
 
-  @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
-  screenSize: SideNavToggle = { collapsed: false, screenWidth: 0 };
-  navData: NavData[];
+  @Output() onToggleSideNav: EventEmitter<ISideNavToggle> = new EventEmitter();
+  screenSize: ISideNavToggle = { collapsed: false, screenWidth: 0 };
+  navData: INavData[];
+  multiple: boolean = true;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any){
@@ -49,7 +41,10 @@ export class SidenavComponent {
     }
   }
 
-  constructor(private sideNavService: NavDataServiceService){
+  constructor(
+      private sideNavService: NavDataServiceService,
+      public router: Router
+    ){
     this.navData = sideNavService.getAllNavData() ?? [];
     this.screenSize.screenWidth = window.innerWidth;
   }
@@ -62,5 +57,24 @@ export class SidenavComponent {
   closeSideNav():void {
     this.screenSize.collapsed = false;
     this.onToggleSideNav.emit(this.screenSize);
+  }
+
+  handleClick(item: INavData): void {
+    this.shrinkItems(item);
+    item.expanded = !item.expanded;
+  }
+
+  getActiveClass(data: INavData): string {
+    return this.router.url.includes(data.routeLink) ? 'active' : '';
+  }
+
+  shrinkItems(item: INavData): void {
+    if (!this.multiple){
+      for (let modelItem of this.navData) {
+        if (item !== modelItem && modelItem.expanded){
+          modelItem.expanded = false;
+        }
+      }
+    }
   }
 }

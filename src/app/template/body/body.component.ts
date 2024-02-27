@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SideNavToggle } from '../sidenav/sidenavtoogle';
+import { ISideNavToggle } from '../sidenav/sidenavtoogle';
 
 @Component({
   selector: 'app-body',
@@ -10,16 +10,16 @@ import { SideNavToggle } from '../sidenav/sidenavtoogle';
   styleUrl: './body.component.scss'
 })
 export class BodyComponent {
-  @Input() screenStatus: SideNavToggle = {collapsed: false, screenWidth: 0};
+  @Input() screenStatus: ISideNavToggle = {collapsed: false, screenWidth: 0};
 
   getBodyClass(): string {
     let styleClass = '';
-
-    if(this.screenStatus.collapsed && this.screenStatus.screenWidth > 768){
-      styleClass = 'body-trimed';
-    } else if(this.screenStatus.collapsed && this.screenStatus.screenWidth <= 768 && this.screenStatus.screenWidth > 0){
-      styleClass = 'body-md-screen';
-    }
+    
+   if(this.screenStatus.collapsed && this.screenStatus.screenWidth > 768){
+    styleClass = 'body-trimmed';
+  } else if(this.screenStatus.collapsed && this.screenStatus.screenWidth <= 768 && this.screenStatus.screenWidth > 0){
+    styleClass = 'body-md-screen';
+  }
 
     console.log('screenStatus = '+JSON.stringify(this.screenStatus));
     console.log('StyleClass = '+styleClass);
