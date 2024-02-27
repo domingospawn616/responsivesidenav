@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { NavDataServiceService } from '../nav-data-service.service';
 import { INavData } from '../nav-data';
 import { Router, RouterLinkActive, RouterModule } from '@angular/router';
@@ -25,11 +25,11 @@ import { SublevelMenuComponent } from './sublevel-menu/sublevel-menu.component';
     ]),
   ],
 })
-export class SidenavComponent {
+export class SidenavComponent implements OnInit {
 
   @Output() onToggleSideNav: EventEmitter<ISideNavToggle> = new EventEmitter();
   screenSize: ISideNavToggle = { collapsed: false, screenWidth: 0 };
-  navData: INavData[];
+  navData: INavData[] = [];
   multiple: boolean = true;
 
   @HostListener('window:resize', ['$event'])
@@ -44,8 +44,10 @@ export class SidenavComponent {
   constructor(
       private sideNavService: NavDataServiceService,
       public router: Router
-    ){
-    this.navData = sideNavService.getAllNavData() ?? [];
+    ){}
+
+  ngOnInit(): void {
+    this.navData = this.sideNavService.getAllNavData() ?? [];
     this.screenSize.screenWidth = window.innerWidth;
   }
 
