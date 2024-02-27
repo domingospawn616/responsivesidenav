@@ -3,6 +3,7 @@ import { ISideNavToggle } from '../sidenav/sidenavtoogle';
 import { MatIcon } from '@angular/material/icon';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkMenuModule } from '@angular/cdk/menu';
+import { languages } from './header-dummy-data';
 
 @Component({
   selector: 'app-header',
@@ -15,9 +16,12 @@ export class HeaderComponent implements OnInit {
   @Input() screenState :ISideNavToggle = {collapsed: false, screenWidth: 0};
 
   canShowSearchAsOverlay = false;
+  selectedLanguage: any;
+  languages = languages;
 
   ngOnInit(): void {
     this.checkCanShowSearchAsOverlay(window.innerWidth);
+    this.selectedLanguage = this.languages[1];
   }
 
   @HostListener('window:resize', ['$event'])

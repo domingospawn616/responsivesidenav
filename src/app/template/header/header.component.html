@@ -22,8 +22,8 @@
         <div class="head-content-right">
             <div class="head-menu">
                 <div class="head-menu-item">
-                    <button class="head-menu-item-btn ripple">
-                        <img [src]="'assets/flags/us.jpg'" class="flag" alt="flag">
+                    <button class="head-menu-item-btn ripple" [cdkMenuTriggerFor]="languageOverlay">
+                        <img [src]="'assets/flags/'+selectedLanguage.flag+'.jpg'" class="flag" alt="flag">
                     </button>
                 </div>
                 <div class="head-menu-item">
@@ -60,5 +60,18 @@
         <button class="search-btn">
             <mat-icon class="search-icon" fontIcon="search"></mat-icon>
         </button>
+    </div>
+</ng-template>
+
+<ng-template #languageOverlay>
+    <div class="overlay overlay-language overlay-fall" cdkMenu>
+        <ul>
+            @for (lang of languages; track $index) {
+                <li #cdkMenuItem>
+                    <img [src]="'assets/flags/'+lang.flag+'.jpg'" alt="flag">
+                    <span>{{lang.language}}</span>
+                </li>
+            }
+        </ul>
     </div>
 </ng-template>
