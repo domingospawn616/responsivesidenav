@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { INavData } from '../../nav-data';
 import { MatIcon } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { fadeInOut } from '../sidenavtoogle';
 
@@ -40,6 +40,8 @@ export class SublevelMenuComponent {
   @Input() expanded: boolean | undefined;
   @Input() multiple: boolean = false;
 
+  constructor(public router: Router){}
+
   handleClick(pItem: any):void {
     if (!this.multiple){
       if(this.data.items && this.data.items.length > 0){
@@ -54,4 +56,7 @@ export class SublevelMenuComponent {
     pItem.expanded = !pItem.expanded;
   }
   
+  getActiveClass(item: INavData): string {
+    return item.expanded && this.router.url.includes(item.routeLink) ? 'active-sublevel' : '';
+  }
 }

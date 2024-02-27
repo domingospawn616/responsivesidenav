@@ -15,7 +15,10 @@
             @for (navItem of navData; track $index) {
                 <li class="sidenav-nav-item">
                     @if (navItem.items && navItem.items.length > 0) {
-                        <a class="sidenav-nav-link" (click)="handleClick(navItem)">
+                        <a class="sidenav-nav-link" 
+                            [class]="getActiveClass(navItem)"
+                            (click)="handleClick(navItem)"
+                        >
                             <mat-icon class="sidenav-nav-link-icon" [fontIcon]="navItem.icon"></mat-icon>
                             @if (screenSize.collapsed) {
                                 <span class="sidenav-link-text">{{navItem.label}}</span>

@@ -12,7 +12,10 @@ export const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'products', component: ProductsComponent},
     {path: 'statistics', component: StatisticsComponent},
-    {path: 'coupens', component: CoupensComponent},
+    {
+        path: 'coupens', 
+        loadChildren: () => import('./pages/coupens/coupens.module').then(m => m.CoupensModule)
+    },
     {path: 'pages', component: PagesComponent},
     {path: 'media', component: MediaComponent},
     {path: 'settings', component: SettingsComponent},

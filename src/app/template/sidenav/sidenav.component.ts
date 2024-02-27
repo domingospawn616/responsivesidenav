@@ -1,7 +1,7 @@
 import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { NavDataServiceService } from '../nav-data-service.service';
 import { INavData } from '../nav-data';
-import { RouterLinkActive, RouterModule } from '@angular/router';
+import { Router, RouterLinkActive, RouterModule } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 import { ISideNavToggle, fadeInOut } from './sidenavtoogle';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
@@ -41,7 +41,10 @@ export class SidenavComponent {
     }
   }
 
-  constructor(private sideNavService: NavDataServiceService){
+  constructor(
+      private sideNavService: NavDataServiceService,
+      public router: Router
+    ){
     this.navData = sideNavService.getAllNavData() ?? [];
     this.screenSize.screenWidth = window.innerWidth;
   }
@@ -65,5 +68,9 @@ export class SidenavComponent {
       }
     }
     item.expanded = !item.expanded;
+  }
+
+  getActiveClass(data: INavData): string {
+    return this.router.url.includes(data.routeLink) ? 'active' : '';
   }
 }

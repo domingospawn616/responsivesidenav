@@ -14,7 +14,10 @@
         @for (item of data.items; track $index) {
             <li class="sublevel-nav-item">
                 @if (item.items && item.items.length > 0) {
-                    <a class="sublevel-nav-link" (click)="handleClick(item)">
+                    <a class="sublevel-nav-link"
+                        (click)="handleClick(item)"
+                        [class]="getActiveClass(item)"
+                    >
                         <mat-icon class="sublevel-nav-icon" [fontIcon]="item.icon"></mat-icon>
                         @if (collapsed) {
                             <span class="sublevel-link-text" @fadeInOut>{{item.label}}</span>
