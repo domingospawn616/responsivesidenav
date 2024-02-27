@@ -1,1 +1,21 @@
-<p>header works!</p>
+<div class="head" [class]="getHeadClass()">
+    <div class="head-content">
+        <div class="head-content-left">
+            <div class="search-container">
+                <div class="normal-search">
+                    <input type="search" class="search" name="" id="" placeholder="Search...">
+                    <mat-icon fontIcon="search"></mat-icon>
+                </div>
+            </div>
+        </div>
+        <div class="head-content-right">
+            <div class="head-menu">
+                <div class="head-menu-item">
+                    <button class="head-menu-item-btn ripple">
+                        <img [src]="'assets/flags/us.jpg'" class="flag" alt="flag">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

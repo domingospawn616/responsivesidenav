@@ -21,8 +21,8 @@ export class BodyComponent {
     styleClass = 'body-md-screen';
   }
 
-    console.log('screenStatus = '+JSON.stringify(this.screenStatus));
-    console.log('StyleClass = '+styleClass);
+    //console.log('screenStatus = '+JSON.stringify(this.screenStatus));
+    //console.log('StyleClass = '+styleClass);
     return styleClass;
   }
 }

@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { SidenavComponent } from './template/sidenav/sidenav.component';
 import { ISideNavToggle } from './template/sidenav/sidenavtoogle';
 import { BodyComponent } from './template/body/body.component';
+import { HeaderComponent } from './template/header/header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SidenavComponent, BodyComponent],
+  imports: [RouterOutlet, SidenavComponent, BodyComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

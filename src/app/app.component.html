@@ -1,4 +1,7 @@
 <app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
+<app-header
+    [screenState]="isSideNavStatus"
+></app-header>
 <app-body
     [screenStatus]="isSideNavStatus"
 ></app-body>
