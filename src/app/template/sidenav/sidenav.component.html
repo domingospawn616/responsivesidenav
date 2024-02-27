@@ -45,7 +45,9 @@
                         <a class="sidenav-nav-link" 
                             [routerLink]="[navItem.routeLink]" 
                             routerLinkActive="active"
-                            [routerLinkActiveOptions]="{exact: true}" >
+                            [routerLinkActiveOptions]="{exact: true}" 
+                            (click)="shrinkItems(navItem)"
+                        >
                             <mat-icon class="sidenav-nav-link-icon" [fontIcon]="navItem.icon"></mat-icon>
                             @if (screenSize.collapsed){ <span @fadeInOut class="sidenav-link-text">{{navItem.label}}</span> }
                         </a>

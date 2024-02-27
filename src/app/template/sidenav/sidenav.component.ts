@@ -30,7 +30,7 @@ export class SidenavComponent {
   @Output() onToggleSideNav: EventEmitter<ISideNavToggle> = new EventEmitter();
   screenSize: ISideNavToggle = { collapsed: false, screenWidth: 0 };
   navData: INavData[];
-  multiple: boolean = false;
+  multiple: boolean = true;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any){
@@ -60,6 +60,15 @@ export class SidenavComponent {
   }
 
   handleClick(item: INavData): void {
+    this.shrinkItems(item);
+    item.expanded = !item.expanded;
+  }
+
+  getActiveClass(data: INavData): string {
+    return this.router.url.includes(data.routeLink) ? 'active' : '';
+  }
+
+  shrinkItems(item: INavData): void {
     if (!this.multiple){
       for (let modelItem of this.navData) {
         if (item !== modelItem && modelItem.expanded){
@@ -67,10 +76,5 @@ export class SidenavComponent {
         }
       }
     }
-    item.expanded = !item.expanded;
-  }
-
-  getActiveClass(data: INavData): string {
-    return this.router.url.includes(data.routeLink) ? 'active' : '';
   }
 }
