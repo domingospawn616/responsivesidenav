@@ -3,7 +3,7 @@ import { ISideNavToggle } from '../sidenav/sidenavtoogle';
 import { MatIcon } from '@angular/material/icon';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkMenuModule } from '@angular/cdk/menu';
-import { languages } from './header-dummy-data';
+import { languages, notifications, userItems } from './header-dummy-data';
 
 @Component({
   selector: 'app-header',
@@ -18,6 +18,8 @@ export class HeaderComponent implements OnInit {
   canShowSearchAsOverlay = false;
   selectedLanguage: any;
   languages = languages;
+  notifications = notifications;
+  userItems = userItems;
 
   ngOnInit(): void {
     this.checkCanShowSearchAsOverlay(window.innerWidth);
