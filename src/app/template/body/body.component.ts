@@ -14,12 +14,12 @@ export class BodyComponent {
 
   getBodyClass(): string {
     let styleClass = '';
-
-    if(this.screenStatus.collapsed && this.screenStatus.screenWidth > 768){
-      styleClass = 'body-trimed';
-    } else if(this.screenStatus.collapsed && this.screenStatus.screenWidth <= 768 && this.screenStatus.screenWidth > 0){
-      styleClass = 'body-md-screen';
-    }
+    
+   if(this.screenStatus.collapsed && this.screenStatus.screenWidth > 768){
+    styleClass = 'body-trimmed';
+  } else if(this.screenStatus.collapsed && this.screenStatus.screenWidth <= 768 && this.screenStatus.screenWidth > 0){
+    styleClass = 'body-md-screen';
+  }
 
     console.log('screenStatus = '+JSON.stringify(this.screenStatus));
     console.log('StyleClass = '+styleClass);
