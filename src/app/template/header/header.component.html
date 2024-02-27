@@ -2,10 +2,21 @@
     <div class="head-content">
         <div class="head-content-left">
             <div class="search-container">
-                <div class="normal-search">
-                    <input type="search" class="search" name="" id="" placeholder="Search...">
-                    <mat-icon class="search-icon" fontIcon="search"></mat-icon>
-                </div>
+                @if (!canShowSearchAsOverlay) {
+                    <div class="normal-search">
+                        <input type="search" class="search" name="" id="" placeholder="Search...">
+                        <mat-icon class="search-icon" fontIcon="search"></mat-icon>
+                    </div>
+                } @else {
+                    <div>
+                        <button
+                            [cdkMenuTriggerFor]="searchOverlay"
+                            class="search-menu-btn ripple"
+                        >
+                            <mat-icon class="search-icon" fontIcon="search"></mat-icon>
+                        </button>
+                    </div>
+                }
             </div>
         </div>
         <div class="head-content-right">
@@ -42,3 +53,12 @@
         </div>
     </div>
 </div>
+
+<ng-template #searchOverlay>
+    <div class="overlay overlay-search overlay-fall" cdkMenu>
+        <input type="search" name="" id="" class="search" placeholder="Search...">
+        <button class="search-btn">
+            <mat-icon class="search-icon" fontIcon="search"></mat-icon>
+        </button>
+    </div>
+</ng-template>

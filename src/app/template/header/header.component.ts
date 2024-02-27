@@ -1,11 +1,13 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { ISideNavToggle } from '../sidenav/sidenavtoogle';
 import { MatIcon } from '@angular/material/icon';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { CdkMenuModule } from '@angular/cdk/menu';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatIcon],
+  imports: [MatIcon, CdkMenuModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
