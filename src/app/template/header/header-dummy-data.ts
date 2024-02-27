@@ -41,7 +41,7 @@ export const notifications = [
 
 export const userItems = [
     {
-       icon: 'user',
+       icon: 'person',
        label: 'Profile'
     },
     {

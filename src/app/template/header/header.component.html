@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="head-user-avatar-container">
-                <div class="head-user-avatar">
+                <div class="head-user-avatar" [cdkMenuTriggerFor]="userOverlay">
                     <img src="../../../assets/user3.jpg" alt="user" class="user-avatar">
                     <div class="circle-indicator pulse">
 
@@ -87,7 +87,7 @@
             </li>
             @for (notification of notifications; track $index) {
                 <li class="notification-message-container" cdkMenuItem>
-                    <mat-icon [fontIcon]="notification.icon"></mat-icon>&nbsp;
+                    <mat-icon class="notification-icon" [fontIcon]="notification.icon"></mat-icon>&nbsp;
                     <div>
                         <div class="classification-subject">
                             {{notification.subject}}
@@ -96,6 +96,21 @@
                             {{notification.description}}
                         </p>
                     </div>
+                </li>
+            }
+        </ul>
+    </div>
+</ng-template>
+
+<ng-template #userOverlay>
+    <div class="overlay overlay-user overlay-fall" cdkMenu>
+        <ul>
+            @for (userItem of userItems; track $index) {
+                <li cdkMenuItem>
+                    <a>
+                        <mat-icon class="icon" [fontIcon]="userItem.icon"></mat-icon>
+                        <span>{{userItem.label}}</span>
+                    </a>
                 </li>
             }
         </ul>
