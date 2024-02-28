@@ -1,8 +1,94 @@
-<h1>Dashboard</h1>
+<h2>Dashboard</h2>
+
+<div [class]="getClass()">
+    <div class="col-left">
+        <div class="card welcome-card">
+            <div class="card-head welcome-head-container">
+                <div class="col-left">
+                    <div>Welcome Back!</div>
+                    <p>Angular Dashboard</p>
+                </div>
+                <div class="col-right">
+                    <img [src]="'./assets/profile-bg-3.png'" alt="">
+                </div>
+            </div>
+            <div class="card-body welcome-body-container">
+                <div class="col-left">
+                    <div class="avatar">
+                        <img [src]="'./assets/user3.jpg'" alt="">
+                    </div>
+                    <div class="name">John Doe</div>
+                    <p>Web Developer</p>
+                </div>
+                <div class="col-right">
+                    <div class="performance-container">
+                        <div class="performance">
+                            <div>Performance</div>
+                            <div>80%</div>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+                <div class="view-profile">
+                    <button>
+                        View Profile
+                        <mat-icon class="arrow-right" fontIcon="chevron_right"></mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="col-right">
+        <div class="col task-col">
+            <div class="task">
+                <span class="bar completed"></span>
+                <div class="details">
+                    <div>Completed</div>
+                    <p>6 tasks</p>
+                </div>
+                <mat-icon class="edit" fontIcon="edit"></mat-icon>
+            </div>
+            <div class="task">
+                <span class="bar active"></span>
+                <div class="details">
+                    <div>Active</div>
+                    <p>1 tasks</p>
+                </div>
+                <mat-icon class="edit" fontIcon="edit"></mat-icon>
+            </div>
+            <div class="task">
+                <span class="bar new"></span>
+                <div class="details">
+                    <div>New</div>
+                    <p>12 tasks</p>
+                </div>
+                <mat-icon class="edit" fontIcon="edit"></mat-icon>
+            </div>
+            <button>
+                <mat-icon fontIcon="add"></mat-icon>
+                Create new group
+            </button>
+        </div>
+    </div>
+    
+
+<div class="card">
+    <div class="card-head">Lorem ipsum - dashboard</div>
+    <div class="card-body">
+        Urna id volutpat lacus laoreet non curabitur gravida arcu. Odio tempor orci dapibus ultrices in iaculis nunc sed augue. Sed arcu non odio euismod. Amet consectetur adipiscing elit pellentesque habitant morbi tristique. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Faucibus a pellentesque sit amet. Ultrices tincidunt arcu non sodales neque sodales ut etiam. Porta non pulvinar neque laoreet suspendisse interdum consectetur. Vitae et leo duis ut. Volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque. Tortor consequat id porta nibh venenatis cras. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget. Purus viverra accumsan in nisl nisi scelerisque eu. Viverra nam libero justo laoreet sit amet cursus. Tellus mauris a diam maecenas sed enim. Scelerisque felis imperdiet proin fermentum leo vel orci. Quisque sagittis purus sit amet volutpat consequat mauris nunc. Adipiscing elit ut aliquam purus. Dolor morbi non arcu risus quis varius quam. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor.
+    </div>
+</div>
+
+<br>
+<br>
 
 <div class="card">
     <div class="card-head">Lorem ipsum dolor sit amet</div>
     <div class="card-body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dignissim a nisl non facilisis. Aenean convallis tempus interdum. Maecenas eu mauris nisi. Nam molestie a massa id malesuada. Nullam scelerisque pellentesque velit ac convallis. Donec sagittis vestibulum purus nec efficitur. Donec mattis dui lectus, a interdum enim laoreet a. Nam et pharetra ex. Morbi varius eros non dui interdum cursus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc tincidunt euismod felis id tristique.
+        Urna id volutpat lacus laoreet non curabitur gravida arcu. Odio tempor orci dapibus ultrices in iaculis nunc sed augue. Sed arcu non odio euismod. Amet consectetur adipiscing elit pellentesque habitant morbi tristique. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Faucibus a pellentesque sit amet. Ultrices tincidunt arcu non sodales neque sodales ut etiam. Porta non pulvinar neque laoreet suspendisse interdum consectetur. Vitae et leo duis ut. Volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque. Tortor consequat id porta nibh venenatis cras. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget. Purus viverra accumsan in nisl nisi scelerisque eu. Viverra nam libero justo laoreet sit amet cursus. Tellus mauris a diam maecenas sed enim. Scelerisque felis imperdiet proin fermentum leo vel orci. Quisque sagittis purus sit amet volutpat consequat mauris nunc. Adipiscing elit ut aliquam purus. Dolor morbi non arcu risus quis varius quam. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor.
     </div>
 </div>
